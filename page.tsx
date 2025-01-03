@@ -1,12 +1,10 @@
-"use client"
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Camera } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Card, CardContent, CardHeader, CardTitle } from '@/mirror-match/src/app/components/ui/card';
+import { Alert, AlertDescription } from '@/mirror-match/src/app/components/ui/alert';
 
 const emotions = [
-  {
+  { 
     name: 'happy', 
     emoji: '😊', 
     description: 'Show your biggest smile!',
