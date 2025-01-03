@@ -1,10 +1,12 @@
+"use client"
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Camera } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/mirror-match/src/app/components/ui/card';
-import { Alert, AlertDescription } from '@/mirror-match/src/app/components/ui/alert';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 const emotions = [
-  { 
+  {
     name: 'happy', 
     emoji: '😊', 
     description: 'Show your biggest smile!',
@@ -53,13 +55,11 @@ const MirrorMatch = () => {
   const [streak, setStreak] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const [permissionDenied, setPermissionDenied] = useState(false);
-  const [imageCapture, setImageCapture] = useState(null);
+  const [imageCapture, setImageCapture] = useState<ImageCapture | undefined>(undefined);
 
-  const videoRef = useRef(null);
-  const streamRef = useRef(null);
-  const canvasRef = useRef(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const streamRef = useRef<MediaStream | null>(null);
 
-  // Camera setup
   const setupCamera = async () => {
     try {
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -81,7 +81,6 @@ const MirrorMatch = () => {
     }
   };
 
-  // Cleanup camera stream
   useEffect(() => {
     return () => {
       if (streamRef.current) {
@@ -92,18 +91,12 @@ const MirrorMatch = () => {
 
   const captureFrame = async () => {
     if (!imageCapture || isProcessing) return;
-
     setIsProcessing(true);
     try {
-      const bitmap = await imageCapture.grabFrame();
-      
-      // For demo purposes, we'll simulate emotion detection with random feedback
-      // In a real implementation, you would send this image to your emotion detection service
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulate processing
-      
-      const matchScore = Math.random(); // Simulate detection confidence
+      await imageCapture.grabFrame();
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      const matchScore = Math.random();
       provideFeedback(matchScore);
-      
     } catch (error) {
       console.error('Error capturing frame:', error);
       setFeedback('Oops! Something went wrong. Let\'s try again!');
@@ -111,7 +104,7 @@ const MirrorMatch = () => {
     setIsProcessing(false);
   };
 
-  const provideFeedback = (matchScore) => {
+  const provideFeedback = (matchScore: number) => {
     if (matchScore > 0.8) {
       setFeedback(currentEmotion.feedback.success);
       setStreak(prev => prev + 1);

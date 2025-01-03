@@ -35,10 +35,7 @@ const CardTitle = React.forwardRef<HTMLHeadingElement, CardTitleProps>(
   ({ className, ...props }, ref) => (
     <h3
       ref={ref}
-      className={cn(
-        "text-2xl font-semibold leading-none tracking-tight",
-        className
-      )}
+      className={cn("text-2xl font-semibold leading-none tracking-tight", className)}
       {...props}
     />
   )
@@ -53,4 +50,4 @@ const CardContent = React.forwardRef<HTMLDivElement, CardContentProps>(
 CardContent.displayName = "CardContent"
 
 export { Card, CardHeader, CardTitle, CardContent }
-export type { CardProps, CardHeaderProps, CardTitleProps, CardContentProps } 
+export type { CardProps, CardHeaderProps, CardTitleProps, CardContentProps }
