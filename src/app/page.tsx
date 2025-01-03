@@ -70,7 +70,7 @@ const MirrorMatch = () => {
       });
       
       if (videoRef.current) {
-        videoRef.current.srcObject = stream;
+        (videoRef.current as HTMLVideoElement).srcObject = stream;
         streamRef.current = stream;
         const track = stream.getVideoTracks()[0];
         setImageCapture(new ImageCapture(track));
