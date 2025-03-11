@@ -13,3 +13,41 @@
     --destructive-foreground: 210 40% 98%;
   }
 }
+
+/* Global styles */
+body {
+  background-color: #f8f9fa;
+  padding-bottom: 2rem;
+}
+
+/* Custom components */
+.video-container {
+  position: relative;
+  min-height: 350px;
+}
+
+video {
+  background-color: #000;
+}
+
+/* Custom purple button for consistency */
+.btn-purple {
+  background-color: #8a2be2 !important;
+  border-color: #7a1dd2 !important;
+}
+
+.btn-purple:hover {
+  background-color: #7a1dd2 !important;
+  border-color: #6a0dc2 !important;
+}
+
+/* Animation for emoji */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.emoji-target {
+  animation: pulse 2s infinite;
+}
