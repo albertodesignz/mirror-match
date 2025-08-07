@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mirror Match - Discover Your Emotion</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen bg-gradient-to-br from-purple-400 via-pink-500 to-red-500 font-inter">
+    <!-- Animated Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="floating-shape w-64 h-64 bg-white bg-opacity-10 rounded-full absolute -top-32 -left-32 animate-float"></div>
+        <div class="floating-shape w-48 h-48 bg-yellow-300 bg-opacity-20 rounded-full absolute top-1/4 right-10 animate-float-delayed"></div>
+        <div class="floating-shape w-32 h-32 bg-blue-400 bg-opacity-15 rounded-full absolute bottom-20 left-1/4 animate-float-slow"></div>
+        <div class="floating-shape w-56 h-56 bg-green-400 bg-opacity-10 rounded-full absolute bottom-10 -right-28 animate-float"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="relative z-10 backdrop-blur-md bg-white bg-opacity-20 border-b border-white border-opacity-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-lg">M</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-white font-poppins">Mirror Match</h1>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#" class="text-white hover:text-yellow-200 transition-colors duration-200 font-medium">Home</a>
+                    <a href="#" class="text-white hover:text-yellow-200 transition-colors duration-200 font-medium">About</a>
+                    <a href="#" class="text-white hover:text-yellow-200 transition-colors duration-200 font-medium">Contact</a>
+                </div>
+                <!-- Mobile menu button -->
+                <button class="md:hidden text-white hover:text-yellow-200" aria-label="Open navigation menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="relative z-10 pt-8 pb-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-12rem)]">
+                
+                <!-- Left Column - Hero Section -->
+                <div class="text-center lg:text-center space-y-8">
+                    <div class="space-y-6">
+                        <h1 class="text-5xl lg:text-7xl font-bold text-white font-poppins leading-tight">
+                            Mirror
+                            <span class="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">
+                                Match
+                            </span>
+                        </h1>
+                        <p class="text-xl lg:text-2xl text-white text-opacity-90 font-light max-w-2xl">
+                            Match the emjoi's emotion  and level up!
+                        </p>
+                    </div>
+
+                    <!-- Emotion Display -->
+                    <div class="flex justify-center lg:justify-center">
+                        <div class="emotion-container relative">
+                            <div class="emotion text-8xl lg:text-9xl animate-pulse-slow filter drop-shadow-2xl">😊</div>
+                            <div class="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-20 blur-xl animate-glow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Score Display -->
+                    <div class="text-center">
+                        <div class="inline-flex items-center space-x-4 backdrop-blur-md bg-white bg-opacity-10 rounded-2xl px-6 py-3 border border-white border-opacity-20">
+                            <div class="text-white">
+                                <span class="text-sm font-medium opacity-80">Score</span>
+                                <div class="text-2xl font-bold" id="scoreDisplay">0</div>
+                            </div>
+                            <div class="w-px h-8 bg-white opacity-20"></div>
+                            <div class="text-white">
+                                <span class="text-sm font-medium opacity-80">Matches</span>
+                                <div class="text-2xl font-bold" id="matchesDisplay">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Control Buttons -->
+                    <div class="flex flex-wrap gap-3 justify-center">
+                        <button id="startBtn" class="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold hover:from-blue-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg">
+                            <span class="flex items-center space-x-2">
+                                <span>📸</span>
+                                <span>Start Camera</span>
+                            </span>
+                        </button>
+                        <button id="nextEmojiBtn" class="px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-full font-semibold hover:from-indigo-600 hover:to-purple-700 transform hover:scale-105 transition-all duration-200 shadow-lg hidden">
+                            <span class="flex items-center space-x-2">
+                                <span>🎯</span>
+                                <span>Next Challenge</span>
+                            </span>
+                        </button>
+                    </div>
+
+                    <!-- Features -->
+                                   </div>
+
+                <!-- Right Column - Camera Interface -->
+                <div class="relative">
+                    <div class="backdrop-blur-md bg-white bg-opacity-10 rounded-3xl p-8 border border-white border-opacity-20 shadow-2xl">
+                        <div class="text-center mb-6">
+                            <h2 class="text-2xl font-bold text-white mb-2 font-poppins">Capture Your Emotion</h2>
+                            <p class="text-white text-opacity-80">Let's see what you're feeling today</p>
+                        </div>
+
+                        <!-- Camera Container -->
+                        <div class="camera-container relative rounded-2xl overflow-hidden bg-gray-900 bg-opacity-50 mb-6">
+                            <video id="video" autoplay class="w-full h-64 lg:h-80 object-cover bg-gray-800"></video>
+                            <canvas id="canvas" class="hidden"></canvas>
+                            <img id="photo" alt="Your captured image will appear here" class="w-full h-64 lg:h-80 object-cover hidden">
+                            
+                            <!-- Camera Overlay -->
+                            <div class="absolute inset-0 pointer-events-none">
+                                <div class="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-white border-opacity-60"></div>
+                                <div class="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-white border-opacity-60"></div>
+                                <div class="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-white border-opacity-60"></div>
+                                <div class="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-white border-opacity-60"></div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="flex flex-wrap gap-3 justify-center mb-6">
+                            <button id="captureBtn" class="px-6 py-3 bg-gradient-to-r from-green-500 to-teal-600 text-white rounded-full font-semibold hover:from-green-600 hover:to-teal-700 transform hover:scale-105 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                                <span class="flex items-center space-x-2">
+                                    <span>📷</span>
+                                    <span>Capture</span>
+                                </span>
+                            </button>
+                            <button id="retakeBtn" class="px-6 py-3 bg-gradient-to-r from-gray-500 to-gray-600 text-white rounded-full font-semibold hover:from-gray-600 hover:to-gray-700 transform hover:scale-105 transition-all duration-200 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none" disabled>
+                                <span class="flex items-center space-x-2">
+                                    <span>🔄</span>
+                                    <span>Retake</span>
+                                </span>
+                            </button>
+                        </div>
+
+                        <!-- Match Button -->
+                        <div class="text-center">
+                            <button id="matchBtn" class="w-full py-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white rounded-full text-xl font-bold hover:from-yellow-500 hover:via-orange-600 hover:to-red-600 transform hover:scale-105 transition-all duration-200 shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none relative overflow-hidden" disabled>
+                                <span class="relative z-10 flex items-center justify-center space-x-3">
+                                    <span>✨</span>
+                                    <span>Match My Emotion</span>
+                                    <span>✨</span>
+                                </span>
+                                <div class="absolute inset-0 bg-gradient-to-r from-yellow-300 to-red-400 opacity-0 hover:opacity-20 transition-opacity duration-200"></div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Decorative Elements -->
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full opacity-20 blur-xl animate-pulse"></div>
+                    <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full opacity-20 blur-xl animate-pulse delay-1000"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
