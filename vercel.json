@@ -4,9 +4,31 @@
     {
       "src": "index.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "script.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "dist/output.css",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
+    {
+      "src": "/script.js",
+      "dest": "/script.js",
+      "headers": {
+        "Content-Type": "application/javascript"
+      }
+    },
+    {
+      "src": "/dist/output.css",
+      "dest": "/dist/output.css",
+      "headers": {
+        "Content-Type": "text/css"
+      }
+    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
